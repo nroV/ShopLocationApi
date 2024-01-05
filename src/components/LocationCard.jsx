@@ -30,11 +30,11 @@ export default function ShopCard({ item, layout = "grid"}) {
   const telephone = location?.contact.split(" ").splice(0, 4);
   const email = location?.contact.split(" ").splice(5);
 
-  // if (layout === "list") {
-  //   cardlayout = "bg-white shadow-lg  rounded-lg hover:scale-105 duration-500 transition-all gap-y-10 md:flex items-center w-full flex-wrap md:flex-nowrap block ";
+  if (layout === "list") {
+    cardlayout = "bg-white shadow-lg  rounded-lg hover:scale-105 duration-500 transition-all gap-y-10 md:flex items-center w-full flex-wrap md:flex-nowrap block ";
 
-  //   imagelayout = "lg:max-w-[220px] lg:h-full object-cover h-[200px] w-full";
-  // }
+    imagelayout = "lg:max-w-[220px] lg:h-full object-cover h-[200px] w-full";
+  }
 
   return (
     <div className={clsx({'card-grid':isGrid,'card-list':!isGrid})}>
