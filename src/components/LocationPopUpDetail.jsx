@@ -58,12 +58,15 @@ export default function LocationPopUpDetail({ detail }) {
           images.map((image)=><img src={image.image} className="w-[50px] h-[50px]" />)
         }
       </div> */}
-        <header>
+        <header className="flex justify-between">
           <h1 className="text-2xl font-semibold">{name}</h1>
+          <a href={`tel:${telephone}`}>
+              <p className="hover:cursor-pointer w-full">📞 </p>
+            </a>
         </header>
 
         <div className="body text-lg font-semibold space-y-5 my-4">
-          <div className="top-detail flex justify-between items-center">
+          <div className="top-detail flex justify-between items-center flex-wrap">
             <div className="detail flex justify-between gap-6 ">
               <p className="text-white bg-primaryColor-label w-fit p-[4px] px-3 text-md font-semibold">
                 {price_range || "N / A"}
@@ -74,7 +77,7 @@ export default function LocationPopUpDetail({ detail }) {
             </p>
           </div>
 
-          <div className="social-link flex items-center justify-start text-sm">
+          <div className="social-link flex items-center justify-start text-sm flex-wrap">
             <div className="items-center mr-3">
               <ul className="flex items-center gap-1  ">
                 {social_link.map((social) => (
