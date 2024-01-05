@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppToggle } from "../utils/store/appContext";
 
-export default function ImageCard({ src ,imgstyle}) {
+export default function ImageCard({ src ,imgstyle = "image-card-grid"}) {
  
   return (
     <img

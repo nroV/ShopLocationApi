@@ -5,7 +5,7 @@ import { useAppToggle } from "../utils/store/appContext";
 export default function ({ children }) {
 
   
-  const  stylegrid = "max-w-[1200px] mx-auto my-10 grid grid-cols-3 justify-items-center"
+  const  stylegrid = "max-w-[1200px] mx-auto my-10 grid grid-cols-3 justify-items-center "
 
-  return <div className={stylegrid}>{children}</div>;
+  return <div className={stylegrid+''}>{children}</div>;
 }
