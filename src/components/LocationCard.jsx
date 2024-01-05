@@ -33,7 +33,9 @@ export default function ShopCard({ item, layout = "grid"}) {
   if (layout === "list") {
     cardlayout = "bg-white shadow-lg  rounded-lg hover:scale-105 duration-500 transition-all gap-y-10 md:flex items-center w-full flex-wrap md:flex-nowrap block ";
 
-    imagelayout = "lg:max-w-[220px] lg:h-full object-cover h-[200px] w-full";
+    // imagelayout = "lg:max-w-[220px] lg:h-full object-cover h-[200px] w-full";
+
+    //close 
   }
 
   return (
