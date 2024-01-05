@@ -1,42 +1,33 @@
-import React from "react";
 
+import ReactPaginate from "react-paginate";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function ({
   totalPage,
-  setCurrentPage,
-  setOnSelectPage,
   currentPage,
+  onChangePage,
 }) {
 
-
-  const onNextpage= ()=>{
-    setOnSelectPage(pre=>{
-    
-      return pre+1
-    })
-  }
-
-  console.log(currentPage)
+  const handlePageClick = (event) => {
+    const toPage = event.selected;
+    onChangePage(toPage + 1);
+  };
   return (
     <div className="flex flex-row col-span-3 space-x-8 text-sm justify-center">
-      <button onClick={{}}>Prevs</button>
+     
+      <ReactPaginate
+        className="flex gap-5 space-x-5"
+        breakLabel="..."
+        nextLabel="next "
+        activeClassName="bg-primaryColor-label px-3 py-[1px] text-white"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={totalPage}
+        forcePage={currentPage}
+        previousLabel="previous"
+        renderOnZeroPageCount={0}
+      />
 
-      <ul className="flex gap-5 space-x-5">
-        {Array.from({ length: totalPage }, (item, index) => (
-          <li
-            onClick={() => setOnSelectPage(index + 1)}
-            key={index}
-            className={
-              currentPage === index
-                ? ` bg-primaryColor-label px-3 py-[1px] text-white`
-                : "hover:cursor-pointer"
-            }
-          >
-            {index}
-          </li>
-        ))}
-      </ul>
-      <button onClick={onNextpage}>Next</button>
+      {/* <button onClick={{}}>Next</button> */}
     </div>
   );
 }

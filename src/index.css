@@ -22,9 +22,9 @@
 }
 
 .image-card-list {
-    @apply lg:max-w-[220px] lg:h-full object-cover h-[200px] w-full
+    @apply lg:max-w-[320px] lg:h-full object-cover h-[200px] w-full
 }
 .image-card-grid {
-    @apply sm:w-full  object-cover w-full md:h-36 h-[200px] w-full
+    @apply sm:w-full  object-cover md:h-60 h-full w-full
 }
 
