@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .card-grid {
     @apply bg-white shadow-lg  rounded-lg duration-500 transition-all gap-y-10 
 }
