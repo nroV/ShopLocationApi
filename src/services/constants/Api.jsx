@@ -7,3 +7,10 @@ export const axiosClient = axios.create({
  
 })
 
+// fetch('',{headers:{}}).then(res =>{
+//     if(!res.ok){
+//         throw new Error()
+//     }
+//     return res.json() //convert to javascript
+// }).then(re)
+

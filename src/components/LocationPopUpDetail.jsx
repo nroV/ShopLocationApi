@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoEarthOutline } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
-import { Carousel } from "react-responsive-carousel";
-import ScrollCarousel from "scroll-carousel-react";
 import GoogleMapReact from "google-map-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
+// Plugins
+import lgZoom from "lightgallery/plugins/zoom";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import GLightbox from "glightbox";
+import lightGallery from 'lightgallery/react/Lightgallery.es5';
+import ImageGallery from "react-image-gallery";
+// Plugins
+import lgThumbnail from 'lightgallery/plugins/thumbnail'
+
+import "react-image-gallery/styles/css/image-gallery.css";
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+};
+
 export default function LocationPopUpDetail({ detail }) {
   const {
     id,
@@ -32,37 +59,76 @@ export default function LocationPopUpDetail({ detail }) {
     },
     zoom: 16,
   };
+
+  const displayimages = images.map((img)=>{
+    return {original:img.image,thumbnail:img.image}
+  })
+
+
   return (
     <main className="space-y-15 ">
       <section>
-        <div className="slide-container">
-          <ScrollCarousel
-            autoplay
-            autoplaySpeed={1}
-            speed={1}
-            className="w-full mb-3"
+        <div className="slide-container w-full mb-5">
+          {/* <Carousel
+          key={Date.now()}
+            swipeable={false}
+            className="space-x-5"
+            draggable={false}
+            showDots={true}
+            arrows={true}
+            // centerMode={true}
+            partialVisible={true}
+            responsive={responsive}
+            ssr={true} // means to render carousel on server-side.
+            infinite={true}
+            keyBoardControl={true}
+            customTransition="all .5"
+            transitionDuration={500}
+            containerClass="carousel-container"
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            dotListClass="custom-dot-list-style"
+            itemClass="carousel-item-padding-60-px"
           >
-            {images.map((item) => (
+            {images.map((item,index) => (
+              <lightGallery plugins={[lgThumbnail]} speed={500}>
+              <a href={item.image}  data-lg-size="1600-2400">
               <img
-                key={item}
-                className="w-[300px] h-[270px] object-cover"
-                src={item.image}
-              />
+                  key={index}
+                  data-gallery="my-gallery"
+                  className="w-[650px] h-full object-cover mr-9 glightbox-link"
+                  src={item.image}
+                />
+              </a>
+           
+              </lightGallery>
             ))}
-          </ScrollCarousel>
+          </Carousel> */}
+          {
+            images === null ? <>
+              <h1>loading...</h1>
+            </> :  
+             <ImageGallery
+             showBullets = {true}
+            //  onImageLoad={}
+            originalWidth="200px"
+            originalHeight="200px"
+            sizes = {200}
+            
+             items={displayimages}
+             showIndex={true}
+           
+             />
+          }
+    
+        
+    
         </div>
 
-        {/* <div className="img-thumbnail flex my-4 gap-x-5">
-
-      {
-          images.map((image)=><img src={image.image} className="w-[50px] h-[50px]" />)
-        }
-      </div> */}
         <header className="flex justify-between">
           <h1 className="text-2xl font-semibold">{name}</h1>
           <a href={`tel:${telephone}`}>
-              <p className="hover:cursor-pointer w-full">📞 </p>
-            </a>
+            <p className="hover:cursor-pointer w-full">📞 </p>
+          </a>
         </header>
 
         <div className="body text-lg font-semibold space-y-5 my-4">
@@ -80,8 +146,8 @@ export default function LocationPopUpDetail({ detail }) {
           <div className="social-link flex items-center justify-start text-sm flex-wrap">
             <div className="items-center mr-3">
               <ul className="flex items-center gap-1  ">
-                {social_link.map((social) => (
-                  <>
+                {social_link.map((social, index) => (
+                  <li key={index}>
                     <FaFacebook width={110} height={50} color="#0C356A" />
                     <a
                       href={social?.link}
@@ -91,7 +157,7 @@ export default function LocationPopUpDetail({ detail }) {
                     >
                       {social?.name}
                     </a>
-                  </>
+                  </li>
                 ))}
               </ul>
             </div>
